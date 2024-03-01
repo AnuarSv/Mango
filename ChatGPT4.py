@@ -10,7 +10,7 @@ def chat_with_gpt(message):
 
         messages = conversation_cache.copy()
         response = g4f.ChatCompletion.create(
-            model="gpt-4-turbo",
+            model="gpt-3.5-turbo",
             messages=messages,
             stream=True
         )

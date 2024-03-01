@@ -7,7 +7,18 @@ def display(response, time=1200):
     save_conversations_to_file('conversation_history.txt')
 
 def display_text_on_screen(text, time=1200):
-    text = text[:text.find(".")]
+    if len(text) <= 75:
+        start_index = text.find("assistant") + 2
+        end_index = text.find(".", start_index)
+        text = text[start_index:end_index]
+    elif len(text) > 75:
+        text = text[:text.find(".")]
+        start_index = text.find("**") + 2
+        end_index = text.find("**", start_index)
+        text = text[start_index:end_index]
+    else:
+        text = text
+
     root = tk.Tk()
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
